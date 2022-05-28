@@ -4,5 +4,5 @@ from django.urls import re_path, include
 
 urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
-    re_path(r'^post/',include('post.urls'))
+    re_path(r'',include('post.urls'))
 ]
