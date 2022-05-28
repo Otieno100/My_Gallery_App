@@ -15,6 +15,22 @@ def post_of_day(request):
 
 
 
+def search_results(request):
+
+    if 'images' in request.GET and request.GET["images"]:
+        search_term = request.GET.get("images")
+        searched_images = Images.search_by_title(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'Gallery-images/search.html',{"message":message,"images": searched_images})
+
+    else:
+        message = "You haven't searched for any image from the gallery"
+        return render(request, 'Gallery-images/search.html',{"message":message})
+
+
+
+
 # def locate_image(request,location):
 #     photos = Image.filter_by_location(location)
 #     return render(request,'album/location.html',{"located_images":photos})
