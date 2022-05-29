@@ -6,3 +6,29 @@ h1{
 
     color: red;
 }
+
+
+.img-fluid{
+
+/* border: solid red; */
+border-radius: 10px;
+
+}
+
+.description-body{
+
+    color: whitesmoke;
+    /* margin-top: 1cm; */
+}
+
+body{
+background-image: url('https://images5.alphacoders.com/410/410316.jpg');
+color: aliceblue;
+font-family: 'Times New Roman', Times, serif;
+
+}
+
+img{
+    height: 35vh;
+    width: 45vh;
+}
