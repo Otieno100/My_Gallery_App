@@ -1,7 +1,51 @@
-<h1> Welcome to the My-Gallery-APP</h1>
+{%extends 'Gallery-images/base.html'%}
 
+{% block content %}
+{{block.super}}
+<div class="container-fluid" style="background-color:#0f0e0e;">
+  <div class="row">
+    {% for post_item in post %}
 
+    <div class="col-md-3 col-sm-3 col-xs-3">
+      <img src="{{post_item.images_image.url}}" class="img-responsive img-fluid img-thumbnail" style="width: 100%;height:auto"
+        data-toggle="modal" data-target="#{{ post_item.id }}" data-backdrop="false">
+    </div>
 
+    
+    <div class="modal fade right" id="{{ post_item.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
 
+      <div class="modal-dialog modal-full-height modal-right" role="document">
+        <div class="modal-content">
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque reprehenderit accusantium doloremque excepturi, provident odit facere officiis? Velit earum, culpa asperiores, expedita et quidem optio tempora modi in fugiat enim.
+          <div class="modal-header">
+            <h3 class="modal-title w-100 text-center" id="imagetitle"> {{post_item.name}}</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body ">
+            <img class="card-img-top img-responsive" id="img{{post_item.id}}" src="{{post_item.images_image.url}}"
+              alt="Card image cap">
+            <p class="card-text photo ">Photo description : {{post_item.description}}.</p>
+            <p class="card-text shot">Taken in: {{post_item.location}}</p>
+            <p class="card-text cate">Category: {{image.image_category}}</p>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 padding-1 ">
+              <input id="link" class="form-control input-md responsive" type="text"
+                value="https://albrightgallery.herokuapp.com{{post_item.images_image.url}}">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="copyaction()">Copy Link</button>
+          </div>
+
+          <div class="modal-footer text-center">
+            <button type="button" class="btn btn-success btn-center" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -4,8 +4,10 @@ import datetime as dt
 from .models import  Images,Location
 
 # Create your views here.
+
 def index(request):
-    return render(request,'index.html')
+    return render(request, 'Gallery-images/index.html')
+
 
 
 def post_of_day(request):
