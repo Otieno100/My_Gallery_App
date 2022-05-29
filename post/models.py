@@ -60,12 +60,15 @@ class Images(models.Model):
     @classmethod
     def todays_post(cls):
         today = dt.date.today()
-        news = cls.objects.filter(pub_date__date = today)
-        return news
+        post = cls.objects.filter(pub_date__date = today)
+        return post
 
     @classmethod
-    def search_by_title(cls,search_term):
-        news = cls.objects.filter(name__icontains=search_term)
-        return news        
+    def search_by_name(cls,search_term):
+        post = cls.objects.filter(name__icontains=search_term)
+        return post       
 
-    
+    @classmethod
+    def days_news(cls,date):
+        post = cls.objects.filter(pub_date__date = date)
+        return post  
