@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Today-post</title>
-</head>
-
-<body>
 
 
 
@@ -39,7 +28,7 @@
 
     {% empty %}
     <div class="row">
-      <h2 class="text-center">There No posts Items</h2>
+      <h2 class="text-center">There No Posts Items</h2>
     </div>
     {% endfor %}
 
@@ -62,7 +51,7 @@
                             <p class="description-body"><span class="badge">
                                 <i class="fas fa-map-marker-alt"></i> {{images.location.city}}, {{images.location.country}}
                             </span></p>
-                            <span id="photo{{photo.id}}" hidden>{{images.image.url}}</span>
+                            <span id="images{{images.id}}" hidden>{{images.image.url}}</span>
                             <button onclick="copyToClipboard('photo{{images.id}}')" class="btn no-border text-white"><i class="far fa-copy"></i></button>
                         </div>
                         <small style="font-size: 12px; float:right" class="ml-45"><i class="far fa-clock"></i> {{images.post_date | timesince}} ago</small>  
@@ -84,6 +73,3 @@
 
 
 
-</body>
-
-</html>

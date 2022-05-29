@@ -1,5 +1,5 @@
 {% load bootstrap3 %}
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,11 @@
 </head>
 <body>
   {% include "navbar.html" %}
-  {% block content %} <h1 class='text-center'></h1>Post for {{date|date:"l d-F Y"}}</h1> {%endblock%} 
+
+  {% block content %}
+   <!-- <h1 class='text-center'>Post for {{date|date:"l d-F Y"}}</h1>  -->
+  
+  {%endblock%} 
 
 
     
@@ -32,3 +36,8 @@
 {% endblock %}
 </body>
 </html>
+
+
+
+
+

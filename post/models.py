@@ -18,7 +18,8 @@ class User(models.Model):
     def save_user(self):
         self.save()
 
-
+    class Meta:
+        ordering = ['first_name']
 
 
 class Location(models.Model):
@@ -36,6 +37,9 @@ class Category(models.Model):
     A class for the category the Images falls under
     """
     name = models.CharField(max_length=144)
+    def __str__(self) :
+
+        return self.name
 
 
 
@@ -52,7 +56,7 @@ class Images(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category)
     pub_date = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to = 'images/',default = 'brian')
+    images_image = models.ImageField(upload_to = 'images/',default = 'brian')
     def __str__(self):
         return self.name
 
