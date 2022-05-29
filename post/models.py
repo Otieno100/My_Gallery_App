@@ -52,8 +52,7 @@ class Images(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category)
     pub_date = models.DateTimeField(auto_now_add=True)
-    #  pub_date = models.DateTimeField(auto_now_add=True)
-    # image = models.ImageField(blank=True)
+    image = models.ImageField(upload_to = 'images/',default = 'brian')
     def __str__(self):
         return self.name
 
