@@ -16,8 +16,11 @@
   {% if images %}
     {% for image in images %}
       <div class="col-sm-6 col-md-3">
-          <h1>{{images.name}}</h1>
-      </div>
+        <h1>{{images.name}}</h1>
+        <a href="{{images.Images_image.url}}" class="thumbnail">
+            <img src="{{images.Images_image.url}}" class="img-fluid" alt="{{images.name}}">
+            <br>
+            
     {% endfor %}
   {% endif %}
   </div>

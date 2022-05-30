@@ -1,10 +1,10 @@
 h1{
-    color: red;
+    color: darkorange;
 }
 
 .text-center{
 
-    color: red;
+    color: darkgoldenrod;
 }
 
 
@@ -31,4 +31,9 @@ font-family: 'Times New Roman', Times, serif;
 img{
     height: 35vh;
     width: 45vh;
+}
+
+.navbar{
+
+    background-color: aquamarine;
 }
