@@ -2,62 +2,95 @@
 {% block content %}
 {{ block.super}}
 
-<div class="modal-dialog" role="document">
 
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Title: {{post_item.category}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-    </div>
 
-<div class="modal-body">
 
-    <section class="gallery-block compact-gallery">
-        <div class="container">
-            <div class="row modal-body  no-gutters">
-                {% for post_item in post %}
-                <div class="col-md-4 col-lg-4  item zoom-on-hover">
-                    <a class="lightbox" href="{{post_item.name}}"
-                        data-caption="{{post_item.category}}: {{post_item.location}}">
-                        <img class="card-img-top img-fluid image" class="img-responsive"  src="{{post_item.images_image.url}}">
-                        <span class="description">
-                            <span class="description-heading">{{post_item.name}}</span>
-                            <br> <span class="description-body">{{post_item.description}}</span>
-                            <div style="display: flex;">
-                                <p class="description-body"><span class="badge">
-                                        <i class="fas fa-map-marker-alt"></i> {{post_item.location.city}},
-                                        {{post_item.location.country}}
-                                    </span></p>
-                                <span id="post_item{{post_item.name}}" hidden>{{post_item.image.url}}</span>
-                                <!-- <button onclick="copyToClipboard('post_item{{post_item.id}}')" -->
-                                    <!-- class="btn no-border text-white"><i class="far fa-copy"></i></button> -->
-                            </div>
-                            <!-- <small style="font-size: 12px; float:right" class="ml-45"><i class="far fa-clock"></i> {{post_item.post_date | timesince}} ago</small> -->
-                        </span>
-                    </a>
-                </div>
-                {%endfor%}
-            </div>
+
+<section class="gallery-block compact-gallery">
+    <div class="container">
+        {% for post_item in post %}
+
+        <div class="col-md-4 col-lg-4  item zoom-on-hover">
+
+
+            <a class="lightbox" href="{{post_item.name}}" data-caption="{{post_item.category}}: {{post_item.location}}">
+                <!-- <img class="card-img-top img-fluid image" class="img-responsive" src="{{post_item.images_image.url}}"> -->
+                <span class="description">
+                    <!-- <span class="description-heading">{{post_item.name}}</span> -->
+                    <!-- <br> <span class="description-body">{{post_item.description}}</span> -->
+                    <div style="display: flex;">
+                        <p class="description-body"><span class="badge">
+                                <!-- <i class="fas fa-map-marker-alt"></i> {{post_item.location.city}}, -->
+                                <!-- {{post_item.location.country}} -->
+                            </span></p>
+                        <!-- <span id="post_item{{post_item.name}}" hidden>{{post_item.image.url}}</span> -->
+                        <!-- <button onclick="copyToClipboard('post_item{{post_item.id}}')" -->
+                        <!-- class="btn no-border text-white"><i class="far fa-copy"></i></button> -->
+                    </div>
+                    <!-- <small style="font-size: 12px; float:right" class="ml-45"><i class="far fa-clock"></i> {{post_item.post_date | timesince}} ago</small> -->
+                </span>
+            </a>
+
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#exampleModal{{post_item.id}}">
+                CLICK TO VIEW MY Gallery-Image
+            </button>
+
         </div>
-    </section>
+
+
+
+
+
+        <!-- Modal -->
+        <div class="modal text-primary fade" id="exampleModal{{post_item.id}}" tabindex="-1"
+        class="lightbox" href="{{post_item.name}}" data-caption="{{post_item.category}}: {{post_item.location}}">
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                       
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <img class="card-img-top img-fluid image" class="img-responsive"
+                            src="{{post_item.images_image.url}}">
+                            <span class="description-heading">{{post_item.name}}</span>
+                            <p class="category">{{post_item.category}}</p>
+                             <span class="description-body">{{post_item.description}}</span>
+                            <h5 class="modal-title" id="exampleModalLabel">{{post_item.location.city}},{{post_item.location.country}}</h5>
+                            <span id="post_item{{post_item.name}}" hidden>{{post_item.image.url}}</span>
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" value="https://jphoto-gallery.herokuapp.com{{post_item.image_file.url}}"
+                        onclick="copyUrl(this.value)" class="toCopy btn btn-primary">copy image url</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+        {%endfor%}
+
+    </div>
+</section>
+
+
+
 
 </div>
 
 
-</div>
 
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
